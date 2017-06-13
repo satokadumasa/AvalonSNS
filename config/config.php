@@ -24,7 +24,7 @@ define('DEVELOPEMENT', 3);
 
 define('ENVIRONMENTS', 'development');
 define('LOG_LEVEL', DEVELOPEMENT);
-define('DOMAIN_NAME', 'cinnamon.example.com');
+define('DOMAIN_NAME', 'avalonsns.example.com');
 define('DOCUMENT_ROOT', '/');
 define('BASE_URL', 'http://'.DOMAIN_NAME.DOCUMENT_ROOT);
 

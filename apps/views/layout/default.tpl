@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title><!----value:Title----></title>
 <link rel="stylesheet" href="<!----value:document_root---->css/default.css">
+<link rel="stylesheet" href="<!----value:document_root---->css/dropmenu.css">
 </head>
 <body>
 <div class="root">

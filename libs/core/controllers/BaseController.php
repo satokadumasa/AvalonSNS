@@ -41,7 +41,9 @@ class BaseController {
     //    $this->set('Sitemenu',)
     $session = Session::get();
     if (isset($session['Auth'])) {
-      $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
+      // $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
+      $menu_helper = new MenuHelper($session['Auth']);
+      $log_out_str = $menu_helper->site_menu();
     }
     else {
       $log_out_str = "<a href='".DOCUMENT_ROOT."login/'>Login</a>";

@@ -6,7 +6,14 @@ class UserModel extends BaseModel {
 
   //  Relation
   public $belongthTo = null;
-  public $has = null;
+  public $has = array(
+    'SHout' => array(
+      'foreign_key' => 'user_id', 
+    ),
+    'UserInfo' => array(
+      'foreign_key' => 'user_id', 
+    ),
+  );
   public $has_many_and_belongs_to = null;
 
   public $columns = [

@@ -8,9 +8,23 @@ class DefaultController extends BaseController {
   }
 
   public function index() {
+    $shout = new ShoutModel($this->dbh);
+    $form = $shout->createForm();
+
+    $session = Session::get();
+    $auth = $session['Auth'];
+    $this->debug->log("DefaultController::index() session".print_r($session, true));
+    $form['Shout']['user_id'] = $auth['User']['id'];
+    $this->debug->log("DefaultController::index() form".print_r($form, true));
+
+    $shouts = $shout->offset(0)->limit(10)->find('all');
+    $this->debug->log("DefaultController::index() shouts".print_r($shouts, true));
+
+    $this->set('Shout', $form['Shout']); 
+
     $this->set('action_name', 'Home');
     $this->set('Title', 'Home');
-    $this->set('datas', null);
+    $this->set('Shouts', $shouts);
   }
 
   public function error() {
