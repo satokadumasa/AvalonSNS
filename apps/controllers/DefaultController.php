@@ -5,6 +5,7 @@ class DefaultController extends BaseController {
     $database = $conf['default_database'];
     parent::__construct($database, $uri, $url);
     $this->controller_class_name = str_replace('Controller', '', get_class($this));;
+    $this->default = Config::get('acc/default');
   }
 
   public function index() {
@@ -17,10 +18,9 @@ class DefaultController extends BaseController {
     $form['Shout']['user_id'] = $auth['User']['id'];
     $this->debug->log("DefaultController::index() form".print_r($form, true));
 
-    $shouts = $shout->offset(0)->limit(10)->find('all');
+    $shout2 = new ShoutModel($this->dbh);
+    $shouts = $shout2->offset(0)->limit(10)->find('all');
     $this->debug->log("DefaultController::index() shouts".print_r($shouts, true));
-
-    $this->set('Shout', $form['Shout']); 
 
     $this->set('action_name', 'Home');
     $this->set('Title', 'Home');

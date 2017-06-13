@@ -7,7 +7,7 @@ class UserModel extends BaseModel {
   //  Relation
   public $belongthTo = null;
   public $has = array(
-    'SHout' => array(
+    'Shout' => array(
       'foreign_key' => 'user_id', 
     ),
     'UserInfo' => array(
