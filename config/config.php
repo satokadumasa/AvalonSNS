@@ -2,7 +2,6 @@
 define('SITE_NAME', '書庫セラエノ');
 define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('APP_PATH', PROJECT_ROOT.'/apps/');
-define('BIN_PATH', APP_PATH.'bin/');
 define('CONFIG_PATH', PROJECT_ROOT.'/config/');
 define('LIB_PATH', PROJECT_ROOT.'/libs/');
 define('TEMP_PATH', PROJECT_ROOT.'/temp/');
@@ -10,10 +9,12 @@ define('LOG_PATH', PROJECT_ROOT.'/logs/');
 define('MIGRATION_PATH', PROJECT_ROOT.'/db/migrate/');
 define('SCAFFOLD_TEMPLATE_PATH', PROJECT_ROOT.'/templates/');
 
+define('BIN_PATH', APP_PATH.'bin/');
 define('CONTROLLER_PATH', APP_PATH . 'controllers/');
 define('MODEL_PATH', APP_PATH . 'models/');
 define('VIEW_TEMPLATE_PATH', APP_PATH . 'views/');
 define('HELPER_PATH', APP_PATH . 'helpers/');
+define('SERVICE_PATH', APP_PATH.'/services/');
 
 define('_CONTROLLER', '([A-Z].*)');
 define('_ACTION', '([A-Z].*)');
@@ -24,6 +25,7 @@ define('DEVELOPEMENT', 3);
 
 define('ENVIRONMENTS', 'development');
 define('LOG_LEVEL', DEVELOPEMENT);
+// define('DOMAIN_NAME', 'avalonsns.example.com');
 define('DOMAIN_NAME', 'avalonsns.example.com');
 define('DOCUMENT_ROOT', '/');
 define('BASE_URL', 'http://'.DOMAIN_NAME.DOCUMENT_ROOT);
@@ -45,4 +47,5 @@ $CONV_STRING_LIST = array(
     'MONTH' => '\d{2}',
     'MDAY' => '\d{2}',
     'CONFIRM_STRING' => '\w{16}',
+    'SUBSCRIPTION_STRING' => '\w',
   );

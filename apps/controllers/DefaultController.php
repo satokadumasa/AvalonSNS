@@ -14,13 +14,18 @@ class DefaultController extends BaseController {
 
     $session = Session::get();
     $auth = $session['Auth'];
-    $this->debug->log("DefaultController::index() session".print_r($session, true));
-    $form['Shout']['user_id'] = $auth['User']['id'];
-    $this->debug->log("DefaultController::index() form".print_r($form, true));
 
-    $shout2 = new ShoutModel($this->dbh);
-    $shouts = $shout2->offset(0)->limit(10)->find('all');
-    $this->debug->log("DefaultController::index() shouts".print_r($shouts, true));
+    $form['Shout']['user_id'] = $auth['User']['id'];
+    $this->set('Shout', $form['Shout']);
+    
+    $shouts = $shout->offset(0)->limit(10)->find('all');
+
+    $user_ids = $shout->getUserIds($shouts);
+    $user = new UserModel($this->dbh);
+    if (count($user_ids) > 0) {
+        $users = $user->where('User.id', 'IN', $user_ids)->find('all');
+        $shouts = ShoutService::setUserInfoToShout($shouts, $users);
+    }
 
     $this->set('action_name', 'Home');
     $this->set('Title', 'Home');

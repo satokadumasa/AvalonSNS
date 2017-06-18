@@ -43,7 +43,7 @@ class BaseController {
     if (isset($session['Auth'])) {
       // $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
       $menu_helper = new MenuHelper($session['Auth']);
-      $log_out_str = $menu_helper->site_menu();
+      $log_out_str = $menu_helper->site_menu($session['Auth']);
     }
     else {
       $log_out_str = "<a href='".DOCUMENT_ROOT."login/'>Login</a>";
@@ -67,10 +67,16 @@ class BaseController {
 
     $urls = explode('/', explode('?', $url)[0]);
     $uris = explode('/', $uri);
+    $this->debug->log("BaseController::getRequestValues() uri:".print_r($uri, true));
+    $this->debug->log("BaseController::getRequestValues() url:".print_r($url, true));
+    $this->debug->log("BaseController::getRequestValues() urls:".print_r($urls, true));
+    $this->debug->log("BaseController::getRequestValues() uris:".print_r($uris, true));
     
     for ($i=0; $i < count($urls) - 1; $i++) { 
+      $this->debug->log("BaseController::getRequestValues() uri:[".$urls[$i]."] url[".$urls[$i]."]");
       if(!isset($uris[$i])) continue;
       if($uris[$i] == $urls[$i]) continue;
+      $this->debug->log("BaseController::getRequestValues() param:".$urls[$i]);
       $this->request[mb_strtolower($uris[$i], 'UTF-8')] = $urls[$i];
     }
     $this->debug->log("BaseController::getRequestValues() request".print_r($this->request, true));

@@ -76,6 +76,15 @@ class Route {
       if (preg_match('/css/', $url)) {
         return;
       }
+      if (preg_match('/js/', $url)) {
+        return;
+      }
+      if (preg_match('/images/', $url)) {
+        return;
+      }
+      if (preg_match('/empty/', $url)) {
+        return;
+      }
       if (preg_match($pattern, $url)) {
         $value['uri'] = $uri;
         return $value;

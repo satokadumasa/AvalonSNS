@@ -28,4 +28,12 @@ class ShoutModel extends BaseModel {
   public function __construct(&$dbh) {
     parent::__construct($dbh);
   }
+
+  public function getUserIds($shouts) {
+    $user_ids = [];
+    foreach ($shouts as $key => $datum) {
+      $user_ids[] = $datum[$this->model_name]['user_id'];
+    }
+    return $user_ids;
+  }
 }

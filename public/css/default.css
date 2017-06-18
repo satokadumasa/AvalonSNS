@@ -69,29 +69,30 @@
   background: #fff;
   color: #000;
   width: 600px;
-  float: left;
   border: 0px solid gray;
-  overflow: scroll;
 }
 
 .detail {
-  width: 596px;
-  float: left;
-  border: 1px solid gray;
+  width: 600px;
+  border: 0px solid gray;
 }
 .detail_rows {
   width: 600px;
+  min-height: 30px;
+  float: left;
   border: 0px solid gray;
 }
 
 .label_clumn {
-  width: 150px;
+  width: 170px;
+  min-height: 30px;
   float: left;
   border: 0px solid gray;
 }
 
 .input_clumn {
-  width: 450px;
+  width: 430px;
+  min-height: 30px;
   float: left;
   border: 0px solid gray;
 }

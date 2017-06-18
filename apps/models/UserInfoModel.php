@@ -19,11 +19,9 @@ class UserInfoModel extends BaseModel {
   public $columns = [
     'id' => array('type' => 'int', 'length' => 8, 'null' => false, 'key' => 'PRI', 'default' => null, ), 
     'user_id' => array('type' => 'int', 'length' => 8, 'null' => false, 'key' => '', 'default' => null, ), 
-    'photo' => array('type' => 'string', 'length' => 64, 'null' => false, 'key' => '', 'default' => null, ), 
+    'profile_photo' => array('type' => 'string', 'length' => 64, 'null' => false, 'key' => '', 'default' => null, ), 
     'name' => array('type' => 'string', 'length' => 64, 'null' => false, 'key' => '', 'default' => null, ), 
     'zip_code' => array('type' => 'string', 'length' => 7, 'null' => true, 'key' => '', 'default' => null, ), 
-    'pref_id' => array('type' => 'int', 'length' => 8, 'null' => true, 'key' => '', 'default' => null, ), 
-    'city_id' => array('type' => 'int', 'length' => 8, 'null' => true, 'key' => '', 'default' => null, ), 
     'address' => array('type' => 'string', 'length' => 255, 'null' => true, 'key' => '', 'default' => null, ), 
     'telephone' => array('type' => 'string', 'length' => 32, 'null' => true, 'key' => '', 'default' => null, ), 
     'fax' => array('type' => 'string', 'length' => 32, 'null' => true, 'key' => '', 'default' => null, ), 

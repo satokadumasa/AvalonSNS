@@ -1,5 +1,5 @@
 <?php
-class Migrate20170613134248CreateTableShout extends BaseMigrate{
+class Migrate20170617222447CreateTableShoutShoutCategory extends BaseMigrate{
   private $dbh = null;
   public function __construct($default_database) {
     parent::__construct($default_database);
@@ -7,15 +7,14 @@ class Migrate20170613134248CreateTableShout extends BaseMigrate{
 
   public function up() {
     $sql = <<<EOM
-CREATE TABLE shouts (
+CREATE TABLE shout_shout_categories (
   id int(9) NOT NULL AUTO_INCREMENT,
-  user_id int(8) NOT NULL,
-  outline varchar(254) NOT NULL,
-  detail text ,
+  shout_id int(8) NOT NULL,
+  shout_category_id int(8) NOT NULL,
   created_at datetime NOT NULL,
   modified_at datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY index_shouts_id (id)
+  KEY index_shout_shout_categories_id (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 EOM;
     parent::up($sql);
@@ -23,7 +22,7 @@ EOM;
 
   public function down(){
     $sql = <<<EOM
-DROP TABLE shouts;
+DROP TABLE shout_shout_categories;
 EOM;
     parent::down($sql);
   } 

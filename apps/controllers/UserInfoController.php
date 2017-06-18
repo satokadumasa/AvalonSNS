@@ -1,11 +1,16 @@
 <?php
 class UserInfoController extends BaseController{
+  public $auth = null;
   public function __construct($uri, $url = null) {
     $conf = Config::get('database.config');
     $database = $conf['default_database'];
     parent::__construct($database, $uri, $url);
     $this->controller_class_name = str_replace('Controller', '', get_class($this));;
     //$this->role_ids = Config::get('acc/user_infos');
+    $session = Session::get();
+    if (isset($session['Auth'])) {
+      $this->auth = $session['Auth'];
+    }
   }
 
   public function index() {
@@ -40,24 +45,9 @@ class UserInfoController extends BaseController{
     $this->debug->log("UserInfoController::create()");
     $user_infos = new UserInfoModel($this->dbh);
     $form = $user_infos->createForm();
+    $form['UserInfo']['user_id'] = $this->auth['User']['id'];
     $this->set('Title', 'UserInfo Create');
     $this->set('UserInfo', $form['UserInfo']);
-  }
-
-  public function save(){
-    $this->debug->log("UserInfoController::save()");
-    try {
-      $this->dbh->beginTransaction();
-      $user_infos = new UserInfoModel($this->dbh);
-      $user_infos->save($this->request);
-      $this->dbh->commit();
-      $url = BASE_URL . 'UserInfo' . '/show/' . $user_infos->primary_key_value . '/';
-      $this->redirect($url);
-    } catch (Exception $e) {
-      $this->debug->log("UserInfoController::create() error:" . $e->getMessage());
-      $this->set('Title', 'UserInfo Save Error');
-      $this->set('error_message', '保存ができませんでした。');
-    }
   }
 
   public function edit() {
@@ -76,6 +66,25 @@ class UserInfoController extends BaseController{
     }
   }
 
+  public function save(){
+    $this->debug->log("UserInfoController::save()");
+    try {
+      $this->dbh->beginTransaction();
+      $user_infos = new UserInfoModel($this->dbh);
+      UserInfoService::RecvProfilePhoto($this->request);
+      $this->debug->log("UserInfoController::save() form:".print_r($this->request, true));
+
+      $user_infos->save($this->request);
+      $this->dbh->commit();
+      $url = BASE_URL . 'UserInfo' . '/show/' . $user_infos->primary_key_value . '/';
+      $this->redirect($url);
+    } catch (Exception $e) {
+      $this->debug->log("UserInfoController::create() error:" . $e->getMessage());
+      $this->set('Title', 'UserInfo Save Error');
+      $this->set('error_message', '保存ができませんでした。');
+    }
+  }
+
   public function delete() {
     try {
       $this->dbh->beginTransaction();
@@ -87,6 +96,4 @@ class UserInfoController extends BaseController{
       $this->debug->log("UsersController::delete() error:" . $e->getMessage());
     }
   }
-
-
 }

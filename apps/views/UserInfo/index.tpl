@@ -12,10 +12,10 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo photo
+      UserInfo profile_photo
     </div>
     <div class='input_clumn'>
-      <!----value:UserInfo:photo---->
+      <!----value:UserInfo:profile_photo---->
     </div>
   </div>
   <div class='detail_rows'>
@@ -32,22 +32,6 @@
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:zip_code---->
-    </div>
-  </div>
-  <div class='detail_rows'>
-    <div class='label_clumn'>
-      UserInfo pref_id
-    </div>
-    <div class='input_clumn'>
-      <!----value:UserInfo:pref_id---->
-    </div>
-  </div>
-  <div class='detail_rows'>
-    <div class='label_clumn'>
-      UserInfo city_id
-    </div>
-    <div class='input_clumn'>
-      <!----value:UserInfo:city_id---->
     </div>
   </div>
   <div class='detail_rows'>

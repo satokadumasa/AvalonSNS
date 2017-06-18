@@ -77,6 +77,7 @@ class BaseModel {
 
     $column_names = null;
 
+    $this->debug->log("BaseModel::find() sql:".$sql);
     $stmt = $this->dbh->prepare($sql);
 
     foreach ($this->conditions as $k => $v) {
@@ -120,12 +121,17 @@ class BaseModel {
       $primary_keys[] = $data[$this->model_name][$this->primary_key];
       $datas[$data[$this->model_name][$this->primary_key]] = $data;
     }
+    $this->debug->log("BaseModel::find() datas(1):".print_r($datas, true));
     if (count($primary_keys) > 0) {
       if ($this->has){
+        $this->debug->log("BaseModel::find() CH-01:");
         $this->findHasModelesData($datas, $this->has, $primary_keys);
+        $this->debug->log("BaseModel::find() CH-02:");
       }
       if ($this->has_many_and_belongs_to) {
+        $this->debug->log("BaseModel::find() CH-03:");
         $this->findHasManyAndBelongsTo($datas, $primary_keys);
+        $this->debug->log("BaseModel::find() CH-04:");
       }
     }
     if ($type === 'first') {
@@ -133,6 +139,7 @@ class BaseModel {
       $id = $primary_keys[0];
       $datas = $datas[$id];
     }
+    $this->debug->log("BaseModel::find() datas(2):".print_r($datas, true));
     return $datas;
   }
 

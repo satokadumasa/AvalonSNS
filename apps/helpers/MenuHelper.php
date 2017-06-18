@@ -14,10 +14,19 @@ class MenuHelper{
   }
 
   public function site_menu(){
-    $this->debug->log("MenuHelper::site_menu()");
+    $this->debug->log("MenuHelper::site_menu() auth:".print_r($this->auth, true));
+
     $this->debug->log("MenuHelper::site_menu() DOCUMENT_ROOT:".DOCUMENT_ROOT);
     $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
     $user_edit = "<a href='".DOCUMENT_ROOT."User/edit/".$this->auth['User']['id']."/'>UserEdit</a>";
+    $this->debug->log("MenuHelper::site_menu() Auth:".print_r($this->auth, true));
+    if (isset($this->auth['User']['UserInfo'])) {
+      $user_info_edit = '<a href="'.DOCUMENT_ROOT.'UserInfo/edit/'.$this->auth['User']['id'].'/">UserInfo</a>' ;
+    }
+    else {
+      $user_info_edit = '<a href="'.DOCUMENT_ROOT.'UserInfo/create/">UserInfo</a>';
+    }
+    // if (isset($auth[]))
     $site_menu = <<<EOF
     <ul id="dropmenu">
       <li><a href="#">メニュー</a>
@@ -27,6 +36,9 @@ class MenuHelper{
           </li>
           <li>
             $user_edit
+          </li>
+          <li>
+            $user_info_edit
           </li>
         </ul>
       </li>

@@ -1,7 +1,7 @@
 <div class="detail">
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo user_id
+      user_id
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:user_id---->
@@ -9,15 +9,15 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo photo
+      profile_photo
     </div>
     <div class='input_clumn'>
-      <!----value:UserInfo:photo---->
+      <!----value:UserInfo:profile_photo---->
     </div>
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo name
+      name
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:name---->
@@ -25,7 +25,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo zip_code
+      zip_code
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:zip_code---->
@@ -33,23 +33,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo pref_id
-    </div>
-    <div class='input_clumn'>
-      <!----value:UserInfo:pref_id---->
-    </div>
-  </div>
-  <div class='detail_rows'>
-    <div class='label_clumn'>
-      UserInfo city_id
-    </div>
-    <div class='input_clumn'>
-      <!----value:UserInfo:city_id---->
-    </div>
-  </div>
-  <div class='detail_rows'>
-    <div class='label_clumn'>
-      UserInfo address
+      address
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:address---->
@@ -57,7 +41,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo telephone
+      telephone
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:telephone---->
@@ -65,7 +49,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo fax
+      fax
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:fax---->
@@ -73,7 +57,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo mobile_phone
+      mobile_phone
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:mobile_phone---->
@@ -81,7 +65,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo sites
+      sites
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:sites---->
@@ -89,7 +73,7 @@
   </div>
   <div class='detail_rows'>
     <div class='label_clumn'>
-      UserInfo detail
+      detail
     </div>
     <div class='input_clumn'>
       <!----value:UserInfo:detail---->

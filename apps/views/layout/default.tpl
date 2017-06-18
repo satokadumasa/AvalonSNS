@@ -5,15 +5,16 @@
 <title><!----value:Title----></title>
 <link rel="stylesheet" href="<!----value:document_root---->css/default.css">
 <link rel="stylesheet" href="<!----value:document_root---->css/dropmenu.css">
+<script src="/js/jquery-3.2.0.js"></script>
 </head>
 <body>
 <div class="root">
-    <!----renderpartial:common/top_menu:top_menu---->
-    <!----renderpartial:common/side_menu:side_menu---->
-    <div class="contents">
-    <!----renderpartial:CONTROLLER/ACTION:datas---->
-    </div>
-    <!----renderpartial:common/footer:footer---->
+  <!----renderpartial:common/top_menu:top_menu---->
+  <!----renderpartial:common/side_menu:side_menu---->
+  <div class="contents">
+  <!----renderpartial:CONTROLLER/ACTION:datas---->
+  </div>
+  <!----renderpartial:common/footer:footer---->
 </div>
 </body>
 </html>

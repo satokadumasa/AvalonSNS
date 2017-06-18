@@ -1,8 +1,8 @@
 <?php
-class ShoutCategoryModel extends BaseModel {
-  public $table_name  = 'shout_categories';
-  public $model_name  = 'ShoutCategory';
-  public $model_class_name  = 'ShoutCategoryModel';
+class SubscriptionModel extends BaseModel {
+  public $table_name  = 'subscriptions';
+  public $model_name  = 'Subscription';
+  public $model_class_name  = 'SubscriptionModel';
 
   //  Relation
   public $belongthTo = null;
@@ -11,7 +11,8 @@ class ShoutCategoryModel extends BaseModel {
 
   public $columns = [
     'id' => array('type' => 'int', 'length' => 8, 'null' => false, 'key' => 'PRI', 'default' => null, ), 
-    'name' => array('type' => 'string', 'length' => 254, 'null' => true, 'key' => '', 'default' => null, ), 
+    'subscriptionid' => array('type' => 'string', 'length' => 128, 'null' => false, 'key' => '', 'default' => null, ), 
+    'notified' => array('type' => 'int', 'length' => 8, 'null' => false, 'key' => '', 'default' => null, ), 
     'created_at' => array('type' => 'datetime', 'length' => 19, 'null' => false, 'key' => 'PRI', 'default' => null, ), 
     'modified_at' => array('type' => 'datetime', 'length' => 19, 'null' => false, 'key' => 'PRI', 'default' => null, ), 
   ];

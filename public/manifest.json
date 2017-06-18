@@ -1,0 +1,12 @@
+{
+  "name": "AvalonSNS",
+  "short_name": "AvalonSNS",
+  "icons": [{
+    "src": "/images/cat.jpg",
+    "sizes": "256x256",
+    "type": "image/png"
+  }],
+  "start_url": "http://localhost/",
+  "display": "standalone",
+  "gcm_sender_id": "218719495965",
+}

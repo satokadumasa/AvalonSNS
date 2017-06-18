@@ -47,8 +47,6 @@ class View {
    * @param string $action action name
    */
   public function framingView(&$document, $datas, $fileatime, $controller_class_name = null, $action = null) {
-    $this->debug->log('View::framingView() fileatime:'.$fileatime);
-
     if (file_exists($this->view_template_path . $controller_class_name . '/' . $action . 'tpl')) return false;
     $file_context = file($fileatime);
     for($i = 0; $i < count($file_context); $i++) {
@@ -56,7 +54,7 @@ class View {
       $value = str_replace('¥n', '', $value);
       //  展開先の取得
       preg_match_all(
-        "<!----(.*)---->",
+        "<\!----(.*?)---->",
         $value,
         $matchs
       );
@@ -77,6 +75,7 @@ class View {
           
           $partial_tpl_filename = $this->view_template_path . $arr[1] . '.tpl';
           $this->framingView($document, $datas , $partial_tpl_filename);
+          continue;
         }
         else if(strpos($value, '<!----value:')) {
           //  変数展開
@@ -262,7 +261,7 @@ class View {
       $value = $file_context[$j];
       $value = str_replace('¥n', '', $value);
       preg_match_all(
-        '<!----(.*)---->',
+        '<\!----(.*?)---->',
         $value,
         $matchs
       );
