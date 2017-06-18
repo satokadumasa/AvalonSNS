@@ -88,5 +88,10 @@ class ShoutController extends BaseController{
     }
   }
 
-
+  public function getShoutsWithJson()
+  {
+    $shouts = ShoutService::getShoutTimeLine($this->dbh);
+    echo json_encode($shouts);
+    exit();
+  }
 }

@@ -9,23 +9,9 @@ class DefaultController extends BaseController {
   }
 
   public function index() {
-    $shout = new ShoutModel($this->dbh);
-    $form = $shout->createForm();
-
-    $session = Session::get();
-    $auth = $session['Auth'];
-
     $form['Shout']['user_id'] = $auth['User']['id'];
     $this->set('Shout', $form['Shout']);
-    
-    $shouts = $shout->offset(0)->limit(10)->find('all');
-
-    $user_ids = $shout->getUserIds($shouts);
-    $user = new UserModel($this->dbh);
-    if (count($user_ids) > 0) {
-        $users = $user->where('User.id', 'IN', $user_ids)->find('all');
-        $shouts = ShoutService::setUserInfoToShout($shouts, $users);
-    }
+    $shouts = ShoutService::getShoutTimeLine($this->dbh);
 
     $this->set('action_name', 'Home');
     $this->set('Title', 'Home');

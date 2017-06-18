@@ -87,6 +87,4 @@ class ShoutShoutCategoryController extends BaseController{
       $this->debug->log("UsersController::delete() error:" . $e->getMessage());
     }
   }
-
-
 }

@@ -7,47 +7,44 @@
   <textarea name="Shout[detail]" cols="80" rows="10"><!----value:Shout:detail----></textarea><br />
   <input type="submit" name="bottom">
 </form>
-<div class="details">
+<div class="shouts">
   <h1>タイムライン</h1>
+  <div id="tl_top">新規発言読み込み</div>
   <!----iteratior:Shouts:start---->
-  <div class="detail">
-    <div class='detail_rows'>
-      <div class='label_clumn'>
-        Name
-      </div>
-      <div class='input_clumn'>
-        <!----value:Shout:UserInfo:name---->
-      </div>
-      <div class='label_clumn'>
-        Photo
-      </div>
-      <div class='input_clumn'>
+  <div class="shout">
+    <div class="profile_area">
+      <div class="prfile_photo">
         <img src="/images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
       </div>
-      <div class='label_clumn'>
-        Outline
-      </div>
-      <div class='input_clumn'>
-        <!----value:Shout:outline---->
-      </div>
     </div>
-    <div class='detail_rows'>
-      <div class='label_clumn'>
-        Detail
+    <div class="shout_area">
+      <div class="shout_header">
+        <div class="nickname">
+          <!----value:Shout:UserInfo:name----> (<!----value:User:username---->)
+        </div>
+        <div class="created_at">
+          <!----value:Shout:created_at---->
+        </div>
       </div>
-      <div class='input_clumn'>
+      <div class="shout_body">
+        <!----value:Shout:outline----><br />
         <!----value:Shout:detail---->
       </div>
-    </div>
-    <div class='detail_rows'>
-      <div class='label_clumn'>
-        email
+      <div class="shout_footer">
+        <div class="fav_area">
+          Fav[]
+        </div>
+        <div class="res_area">
+          Res[]
+        </div>
+        <div class="scat_area">
+          Scat[]
+        </div>
       </div>
-      <div class='input_clumn'>
-        <!----value:Shouts:email---->
-      </div>
+      <div class=""></div>
     </div>
   </div>
   <!----iteratior:Shout:end---->
+  <div id="tl_bottom">さらに読み込み</div>
 </div>
 

@@ -5,7 +5,16 @@
 <title><!----value:Title----></title>
 <link rel="stylesheet" href="<!----value:document_root---->css/default.css">
 <link rel="stylesheet" href="<!----value:document_root---->css/dropmenu.css">
-<script src="/js/jquery-3.2.0.js"></script>
+<link rel="stylesheet" href="<!----value:document_root---->css/timeline.css">
+<script src="<!----value:document_root---->js/jquery-3.2.0.js"></script>
+<script src="<!----value:document_root---->js/timeline.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#tl_top').on('click', function(event) {
+    $('<p>送信されました</p>').insertAfter(this);
+  });
+});
+</script>
 </head>
 <body>
 <div class="root">

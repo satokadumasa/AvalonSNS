@@ -13,8 +13,17 @@ class UserModel extends BaseModel {
     'UserInfo' => array(
       'foreign_key' => 'user_id', 
     ),
+    'UserFriend' => array(
+      'foreign_key' => 'user_id', 
+    ),
   );
   public $has_many_and_belongs_to = null;
+  // public $has_many_and_belongs_to = array(
+  //   'User' => array(
+  //     'through' => 'UserFriend',
+  //     'foreign_key' => 'user_id',
+  //   ),
+  // );
 
   public $columns = [
     'id' => ['type' => 'int', 'length' => 8, 'null' => false, 'key' => 'PRI', 'default' => null, ], 
