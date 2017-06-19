@@ -7,9 +7,16 @@
   <textarea name="Shout[detail]" cols="80" rows="10"><!----value:Shout:detail----></textarea><br />
   <input type="submit" name="bottom">
 </form>
+<form name="get_timeline" id="get_timeline">
+  <input type="hidden" name="from" id="timeline_from" value="20170617201112">
+  <input type="hidden" name="limit" id="timeline_limit">
+  <input type="hidden" name="target" id="target" value="newer">
+</form>
 <div class="shouts">
   <h1>タイムライン</h1>
-  <div id="tl_top">新規発言読み込み</div>
+  <div id="tl_top">
+    新規発言読み込み
+  </div>
   <!----iteratior:Shouts:start---->
   <div class="shout">
     <div class="profile_area">

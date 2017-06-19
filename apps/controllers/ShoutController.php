@@ -99,6 +99,7 @@ class ShoutController extends BaseController{
     $this->debug->log("UsersController::getShoutsWithJson() form:" . print_r($form, true));
     $shouts = ShoutService::getShoutTimeLine($this->dbh, $form);
     echo json_encode($shouts);
+    $this->debug->log("UsersController::getShoutsWithJson() shouts_json:" . print_r(json_encode($shouts), true));
     exit();
   }
 }

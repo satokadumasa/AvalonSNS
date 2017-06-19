@@ -1,6 +1,8 @@
 <?php
 class ShoutService {
-  public static function getShoutTimeLine($dbh, $options) {
+  public static function getShoutTimeLine($dbh, $options = null) {
+    $debug =new Logger('DEBUG');
+    $debug->log("ShoutService::getShoutTimeLine() options:".print_r($options, true));
     $shout = new ShoutModel($dbh);
 
     $session = Session::get();
@@ -18,7 +20,9 @@ class ShoutService {
                    . substr($options['Shout']['created_at'], 8, 2) . ':'  //  時
                    . substr($options['Shout']['created_at'], 10, 2) . ':'  //　分
                    . substr($options['Shout']['created_at'], 12, 2);       // 病
-      $shout->where('Shout.created_at', '>=', $modified_at);
+      $operator = (isset($options['Shout']['target']) && $options['Shout']['target'] == 'older') ? '<=' : '>=';
+      $debug->log("ShoutService::getShoutTimeLine() operator:".$operator);
+      $shout->where('Shout.created_at', $operator, $modified_at);
     }
     $shouts = $shout->find('all');
 
