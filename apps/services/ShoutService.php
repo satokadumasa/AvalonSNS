@@ -11,7 +11,7 @@ class ShoutService {
     $user_friend_ids = $user_friend->getFriendIds($auth);
     $user_friend_ids[] = $auth['User']['id'];
 
-    $shouts = $shout->where('Shout.user_id', 'IN', $user_friend_ids)->offset(0)->limit(10)->find('all');
+    $shouts = $shout->where('Shout.user_id', 'IN', $user_friend_ids)->offset(0)->limit(10)->desc('modified_at')->find('all');
 
     $user_ids = $shout->getUserIds($shouts);
     $user = new UserModel($dbh);
@@ -45,8 +45,14 @@ class ShoutService {
         $shout['Shout'] = str_replace("\r", '', $shout['Shout']);
         $shout['Shout'] = str_replace("\n", '<br />', $shout['Shout']);
       }
+      unset($shout['User']['password']);
+      unset($shout['User']['role_id']);
+      unset($shout['User']['email']);
+      unset($shout['User']['authentication_key']);
+
       $shout_arr[] = $shout;
     }
+    $debug->log("ShoutService::setUserInfoToShout() shout_arr(1):".print_r($shout_arr, true));
     return $shout_arr;
   }
 }

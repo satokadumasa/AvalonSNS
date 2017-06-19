@@ -9,7 +9,9 @@ class DefaultController extends BaseController {
   }
 
   public function index() {
-    $form['Shout']['user_id'] = $auth['User']['id'];
+    $shout = new ShoutModel($dbh);
+    $form = $shout->createForm();
+    $form['Shout']['user_id'] = $this->auth['User']['id'];
     $this->set('Shout', $form['Shout']);
     $shouts = ShoutService::getShoutTimeLine($this->dbh);
 

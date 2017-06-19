@@ -5,8 +5,7 @@ class BaseModel {
   //  検索条件指定
   protected $conditions = [];
   //  並び順指定
-  protected $ascs = null;
-  protected $descs = null;
+  public $ascs = [];
   protected $keys = null;
   protected $max_rows = 0;
   protected $limit_num = 0;
@@ -124,14 +123,10 @@ class BaseModel {
     $this->debug->log("BaseModel::find() datas(1):".print_r($datas, true));
     if (count($primary_keys) > 0) {
       if ($this->has){
-        $this->debug->log("BaseModel::find() CH-01:");
         $this->findHasModelesData($datas, $this->has, $primary_keys);
-        $this->debug->log("BaseModel::find() CH-02:");
       }
       if ($this->has_many_and_belongs_to) {
-        $this->debug->log("BaseModel::find() CH-03:");
         $this->findHasManyAndBelongsTo($datas, $primary_keys);
-        $this->debug->log("BaseModel::find() CH-04:");
       }
     }
     if ($type === 'first') {
@@ -237,6 +232,17 @@ class BaseModel {
     }
 
     $sql .= $this->createCondition();
+
+    $this->debug->log("BaseModel::creteFindSql() ascs[".count($this->ascs)."]");
+    if (count($this->ascs) > 0 ) {
+      $sql .= ' ORDER BY ';
+    }
+
+    if (count($this->ascs) > 0) {
+      foreach ($this->ascs as $key => $asc) {
+        $sql .= $asc;
+      }
+    }
 
     if($this->limit_num > 0) $sql .= " LIMIT " . $this->limit_num ." "; 
     if($this->offset_num > 0) $sql .= " OFFSET " . $this->offset_num . " ";
@@ -366,7 +372,7 @@ class BaseModel {
    *  @retrun BaseModel $this
    */
   public function desc($asc){
-    $this->descs[] = $this->descs ? "," . $this->model_name . "." . $asc . " DESC ":  " " . $this->model_name . "." . $asc . " DESC ";
+    $this->ascs[] = $this->ascs ? "," . $this->model_name . "." . $asc . " DESC ":  " " . $this->model_name . "." . $asc . " DESC ";
     return $this;
   }
 

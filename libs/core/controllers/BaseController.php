@@ -18,6 +18,7 @@ class BaseController {
   protected $auth_check = [];
   public $roles = [];
   public $role_ids = [];
+  protected $auth = null;
 
   public function __construct($database, $uri, $url) {
     Session::sessionStart();
@@ -44,6 +45,7 @@ class BaseController {
       // $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
       $menu_helper = new MenuHelper($session['Auth']);
       $log_out_str = $menu_helper->site_menu($session['Auth']);
+      $this->auth = $session['Auth'];
     }
     else {
       $log_out_str = "<a href='".DOCUMENT_ROOT."login/'>Login</a>";
