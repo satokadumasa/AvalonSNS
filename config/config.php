@@ -48,4 +48,5 @@ $CONV_STRING_LIST = array(
     'MDAY' => '\d{2}',
     'CONFIRM_STRING' => '\w{16}',
     'SUBSCRIPTION_STRING' => '\w',
+    'CREATED_AT' => '\d{14}',
   );

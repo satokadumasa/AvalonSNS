@@ -91,7 +91,9 @@ class BaseModel {
         case 'created_at':
         case 'modified_at':
           if ($v['operator'] != 'IS NULL') {
-            $stmt->bindParam($column_name, 'NOW()', PDO::PARAM_STR);
+            $value = $value ? $value : 'NOW()';
+            $this->debug->log("BaseModel::find() value:".$value);
+            $stmt->bindParam($column_name, $value, PDO::PARAM_STR);
           }
           break;
         default:

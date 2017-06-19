@@ -66,12 +66,15 @@ class Route {
   }
 
   public function findRoute($url) {
+    $this->debug->log("Route::findRoute() route:".print_r($this->route, true));
     foreach ($this->route as $key => $value) {
       $uri = $key;
       $key = str_replace('/', '\/', $key);
+      $this->debug->log("Route::findRoute() uri:".$uri);
       foreach ($this->CONV_STRING_LIST as $k => $v) {
         $key = str_replace($k, $v, $key);
       }
+      $this->debug->log("Route::findRoute() uri(2):".$key);
       $pattern = "/".$key."/";
       if (preg_match('/css/', $url)) {
         return;

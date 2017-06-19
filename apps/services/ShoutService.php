@@ -1,8 +1,7 @@
 <?php
 class ShoutService {
-  public static function getShoutTimeLine($dbh) {
+  public static function getShoutTimeLine($dbh, $options) {
     $shout = new ShoutModel($dbh);
-    $form = $shout->createForm();
 
     $session = Session::get();
     $auth = $session['Auth'];
@@ -11,7 +10,17 @@ class ShoutService {
     $user_friend_ids = $user_friend->getFriendIds($auth);
     $user_friend_ids[] = $auth['User']['id'];
 
-    $shouts = $shout->where('Shout.user_id', 'IN', $user_friend_ids)->offset(0)->limit(10)->desc('modified_at')->find('all');
+    $shout->where('Shout.user_id', 'IN', $user_friend_ids)->offset(0)->limit(10)->desc('modified_at');
+    if (isset($options['Shout']['created_at'])){
+      $modified_at = substr($options['Shout']['created_at'], 0, 4) . '-'  //  年
+                   . substr($options['Shout']['created_at'], 4, 2) . '-'  //  月
+                   . substr($options['Shout']['created_at'], 6, 2) . ' '  //  日
+                   . substr($options['Shout']['created_at'], 8, 2) . ':'  //  時
+                   . substr($options['Shout']['created_at'], 10, 2) . ':'  //　分
+                   . substr($options['Shout']['created_at'], 12, 2);       // 病
+      $shout->where('Shout.created_at', '>=', $modified_at);
+    }
+    $shouts = $shout->find('all');
 
     $user_ids = $shout->getUserIds($shouts);
     $user = new UserModel($dbh);
@@ -24,13 +33,13 @@ class ShoutService {
 
 
   public static function setUserInfoToShout($shouts, $users) {
+    $debug =new Logger('DEBUG');
     $shout_arr = [];
     foreach ($shouts as $key => $shout) {
       if (isset($users[$shout['User']['id']]['User']['UserInfo'])){
         $shout['Shout']['UserInfo'] = $users[$shout['User']['id']]['User']['UserInfo'][0]['UserInfo'];
       }
       else {
-        $debug =new Logger('DEBUG');
         $conf = Config::get('user_info');
         $debug->log("ShoutService::setUserInfoToShout() conf(1):".print_r($conf, true));
         $user_info = $conf['user_info'];
