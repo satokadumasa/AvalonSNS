@@ -242,7 +242,7 @@ class View {
       }
       $search = '<!----'.$v.'---->';
       if ($search == "<!----value:document_root---->") {
-        $context = str_replace($search, DOCUMENT_ROOTe, $context);
+        $context = str_replace($search, DOCUMENT_ROOT, $context);
       } else {
         $context = str_replace($search, $arr_value, $context);
       }
