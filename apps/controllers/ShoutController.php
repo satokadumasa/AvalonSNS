@@ -90,16 +90,32 @@ class ShoutController extends BaseController{
 
   public function getShoutsWithJson()
   {
+    try{
     $this->debug->log("UsersController::getShoutsWithJson() request:" . print_r($this->request, true));
-    $shouts = new ShoutModel($this->dbh);
-    $form = $shouts->createForm();
-    foreach ($this->request as $key => $value) {
-      $form['Shout'][$key] = $value;
+      $shouts = new ShoutModel($this->dbh);
+      $form = $shouts->createForm();
+      foreach ($this->request as $key => $value) {
+        if($key == 'Shout') {
+          foreach ($value as $k => $v) {
+            $form['Shout'][$k] = $v;
+          }
+        }
+        $form['Shout'][$key] = $value;
+      }
+      if (isset($form['Shout']['outline']) && $form['Shout']['outline'] !== ''){
+        $this->dbh->beginTransaction();
+        $shouts = new ShoutModel($this->dbh);
+        // $shouts->save($form);
+        $shouts->save($this->request);
+        $this->dbh->commit();
+      }
+      $this->debug->log("UsersController::getShoutsWithJson() form:" . print_r($form, true));
+      $shouts = ShoutService::getShoutTimeLine($this->dbh, $form);
+      echo json_encode($shouts);
+      $this->debug->log("UsersController::getShoutsWithJson() shouts_json:" . print_r(json_encode($shouts), true));
+      exit();
+    } catch (Exception $e) {
+      $this->debug->log("UsersController::getShoutsWithJson() error:" . $e->getMessage());
     }
-    $this->debug->log("UsersController::getShoutsWithJson() form:" . print_r($form, true));
-    $shouts = ShoutService::getShoutTimeLine($this->dbh, $form);
-    echo json_encode($shouts);
-    $this->debug->log("UsersController::getShoutsWithJson() shouts_json:" . print_r(json_encode($shouts), true));
-    exit();
   }
 }

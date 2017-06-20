@@ -1,14 +1,14 @@
 <h1><!----value:action_name----></h1>
-<form action="<!----value:document_root---->Shout/save/" method="post">
+<form action="<!----value:document_root---->Shouts/getShoutsWithJson/" method="post" id="shout_from">
   <input type="hidden" name="Shout[user_id]" size="8" length="8" value="<!----value:Shout:user_id---->"><br>
   ■概要<br />
   <textarea name="Shout[outline]" cols="80" rows="1"><!----value:Shout:outline----></textarea><br />
   ■詳細<br />
   <textarea name="Shout[detail]" cols="80" rows="10"><!----value:Shout:detail----></textarea><br />
-  <input type="submit" name="bottom">
+  <input type="button" name="bottom" id="post_shout" value="投稿">
 </form>
 <form name="get_timeline" id="get_timeline">
-  <input type="hidden" name="from" id="timeline_from" value="20170617201112">
+  <input type="hidden" name="from" id="timeline_from" value="<!----value:timeline_from---->">
   <input type="hidden" name="limit" id="timeline_limit">
   <input type="hidden" name="target" id="target" value="newer">
 </form>
@@ -18,6 +18,7 @@
     新規発言読み込み
   </div>
   <!----iteratior:Shouts:start---->
+  <hr>
   <div class="shout">
     <div class="profile_area">
       <div class="prfile_photo">

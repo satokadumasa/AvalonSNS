@@ -1,9 +1,8 @@
 function generateInsertShoutsHtml(json) {
   var insert_html = ''
-  for (var i = json.length - 1; i >= 0; i--) {
-    console.log(json[i]['Shout']);
-    console.log(json[i]['User']);
+  for (var i = 0; i < (json.length - 1); i++) {
     insert_html += "  <div class='shout'>"
+     + "    <hr>"
      + "    <div class='profile_area'>"
      + "      <div class='prfile_photo'>"
      + "        <img src='/images/profile_photos/" + json[i]['Shout']['UserInfo']['user_id'] + "/" + json[i]['Shout']['UserInfo']['profile_photo'] + "'>"
@@ -58,7 +57,6 @@ function getTimeline(obj) {
 
   var url = '/Shouts/getShoutsWithJson/'+timeline_from+'/';
   // var url = '/Shouts/getShoutsWithJson/';
-  // .phpファイルへのアクセス
   $.ajax({
     url: url,
     type: 'GET',
@@ -73,7 +71,38 @@ function getTimeline(obj) {
       window.alert('正しい結果を得られませんでした。');
     }
   });
+}
 
+function postShout(){
+  alert("getTimeline!");
+  var timeline_from = $('#timeline_from').val();
+  var target = $('#target').val();
+  alert("getTimeline timeline_from:" + timeline_from);
+  var form = $('#shout_from');
+  form['target'] = target;
+  $.ajax({
+    url: form.attr('action'),
+    type: form.attr('method'),
+    data: form.serialize(),
+    scriptCharset: 'utf-8',
+    dataType: 'json',
+    beforeSend: function() {
+        // ボタンを無効化し、二重送信を防止
+        $("#post_shout").attr('disabled', true);
+    },
+    // 応答後
+    complete: function() {
+        // ボタンを有効化し、再送信を許可
+        $("#post_shout").attr('disabled', false);
+        $("#shout_from").find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
+    },
+    success: function(json) {
+      var insert_html = generateInsertShoutsHtml(json);
+      $(insert_html).insertAfter("#tl_top");
+    },
+    error: function(json) {
+      window.alert('正しい結果を得られませんでした。');
+    }
+  });
 
-  console.log(timeline_from);
 }

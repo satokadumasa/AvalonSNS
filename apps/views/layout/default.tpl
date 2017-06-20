@@ -13,6 +13,10 @@ $(document).ready(function() {
   $('#tl_top').on('click', function(event) {
     getTimeline(this);
   });
+  $('#post_shout').on('click', function(event) {
+    alert("postShout");
+    postShout();
+  });
 });
 </script>
 </head>
