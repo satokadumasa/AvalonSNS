@@ -9,6 +9,8 @@ class DefaultController extends BaseController {
   }
 
   public function index() {
+    $shouts = [];
+    
     $shout = new ShoutModel($dbh);
     $form = $shout->createForm();
     $form['Shout']['user_id'] = $this->auth['User']['id'];
