@@ -11,8 +11,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('#tl_top').on('click', function(event) {
-    getTimeline();
-    $('<p>送信されました</p>').insertAfter(this);
+    getTimeline(this);
   });
 });
 </script>

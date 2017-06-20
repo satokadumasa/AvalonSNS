@@ -10,8 +10,8 @@ class ShoutService {
 
     $user_friend = new UserFriendModel($dbh);
     $user_friend_ids = $user_friend->getFriendIds($auth);
-    $user_friend_ids[] = $auth['User']['id'];
-
+    $user_friend_ids[] = 1;
+    if (isset($auth['User']['id'])) $user_friend_ids[] = $auth['User']['id'];
     $shout->where('Shout.user_id', 'IN', $user_friend_ids)->offset(0)->limit(10)->desc('modified_at');
     if (isset($options['Shout']['created_at'])){
       $modified_at = substr($options['Shout']['created_at'], 0, 4) . '-'  //  年
