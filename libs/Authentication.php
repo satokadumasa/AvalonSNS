@@ -3,8 +3,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class Authentication{
   public static function auth(&$dbh, $request){
+    $debug->log("Authentication::auth() request:".print_r($request, true));
     $debug = new Logger('DEBUG');
     $auths = new UserModel($dbh);
+    $debug->log("Authentication::auth() auths:".print_r($auths, true));
     $auth = $auths->auth($request);
     $debug->log("Authentication::auth() auth:".print_r($auth, true));
     if ($auth){
