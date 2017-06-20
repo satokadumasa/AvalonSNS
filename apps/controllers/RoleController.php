@@ -38,7 +38,6 @@ class RoleController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("RoleController::create()");
     $roles = new RoleModel($this->dbh);
     $form = $roles->createForm();
     $this->set('Title', 'Role Create');
@@ -46,7 +45,6 @@ class RoleController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("RoleController::save()");
     try {
       $this->dbh->beginTransaction();
       $roles = new RoleModel($this->dbh);
@@ -62,7 +60,6 @@ class RoleController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("RoleController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];

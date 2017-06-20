@@ -37,7 +37,6 @@ class ShoutShoutCategoryController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("ShoutShoutCategoryController::create()");
     $shout_shout_categories = new ShoutShoutCategoryModel($this->dbh);
     $form = $shout_shout_categories->createForm();
     $this->set('Title', 'ShoutShoutCategory Create');
@@ -45,7 +44,6 @@ class ShoutShoutCategoryController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("ShoutShoutCategoryController::save()");
     try {
       $this->dbh->beginTransaction();
       $shout_shout_categories = new ShoutShoutCategoryModel($this->dbh);
@@ -61,7 +59,6 @@ class ShoutShoutCategoryController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("ShoutShoutCategoryController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];

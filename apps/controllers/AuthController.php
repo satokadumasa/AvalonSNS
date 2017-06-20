@@ -30,7 +30,6 @@ class AuthController extends BaseController{
    *  ログイン処理
    */
   public function auth() {
-    $this->debug->log("AuthController::auth() request:".print_r($this->request, true));
     try{
       if(Authentication::auth($this->dbh, $this->request)){
         $this->redirect(DOCUMENT_ROOT);

@@ -683,13 +683,9 @@ EOM;
    * @param $argv 
    */
   protected function geterateColumnString($argv) {
-    $this->debug->log('Stranger::geterateColumnString() start:');
-    $this->debug->log('Stranger::geterateColumnString() argv:'.print_r($argv, true));
     $column_string = null;
     for ($i = 4; $i < count($argv); $i++) {
       $arr = explode(':', $argv[$i]);
-      $this->debug->log('Stranger::geterateColumnString() argv[$i]:'.print_r($argv[$i], true));
-      $this->debug->log('Stranger::geterateColumnString() arr:'.print_r($arr, true));
 
       $datas = [
           'column_name' => $arr[0],
@@ -700,7 +696,6 @@ EOM;
           'key' => isset($arr[4]) ? $arr[4] : '',
           'default' => isset($arr[5]) ? $arr[5] : 'null',
         ];
-      $this->debug->log('Stranger::geterateColumnString() datas:'.print_r($datas, true));
       $column_string .= "  <div class='detail_rows'>\n";
       $column_string .= "    <div class='label_clumn'>\n";
       $column_string .= "      " . $this->class_name . " " . $datas['column_name'] . "\n";

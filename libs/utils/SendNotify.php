@@ -22,7 +22,6 @@ class SendNotify {
   public function sendNotify(){
     $user = new UserModel($this->dbh);
     $users = $user->where('User.notified_at', 'IS NULL', '')->find('all');
-    $this->debug->log("SendNotify::sendNotify() users".print_r($users, true));
     foreach ($users as $key => $form) {
       $body = null;
       $user2 = null;

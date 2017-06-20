@@ -42,7 +42,6 @@ class UserInfoController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("UserInfoController::create()");
     $user_infos = new UserInfoModel($this->dbh);
     $form = $user_infos->createForm();
     $form['UserInfo']['user_id'] = $this->auth['User']['id'];
@@ -51,7 +50,6 @@ class UserInfoController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("UserInfoController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];
@@ -67,12 +65,10 @@ class UserInfoController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("UserInfoController::save()");
     try {
       $this->dbh->beginTransaction();
       $user_infos = new UserInfoModel($this->dbh);
       UserInfoService::RecvProfilePhoto($this->request);
-      $this->debug->log("UserInfoController::save() form:".print_r($this->request, true));
 
       $user_infos->save($this->request);
       $this->dbh->commit();

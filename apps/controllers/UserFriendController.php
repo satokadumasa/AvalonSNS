@@ -37,7 +37,6 @@ class UserFriendController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("UserFriendController::create()");
     $user_friends = new UserFriendModel($this->dbh);
     $form = $user_friends->createForm();
     $this->set('Title', 'UserFriend Create');
@@ -45,7 +44,6 @@ class UserFriendController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("UserFriendController::save()");
     try {
       $this->dbh->beginTransaction();
       $user_friends = new UserFriendModel($this->dbh);
@@ -61,7 +59,6 @@ class UserFriendController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("UserFriendController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];

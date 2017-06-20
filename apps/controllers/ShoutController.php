@@ -37,7 +37,6 @@ class ShoutController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("ShoutController::create()");
     $shouts = new ShoutModel($this->dbh);
     $form = $shouts->createForm();
     $this->set('Title', 'Shout Create');
@@ -45,7 +44,6 @@ class ShoutController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("ShoutController::save()");
     try {
       $this->dbh->beginTransaction();
       $shouts = new ShoutModel($this->dbh);
@@ -61,7 +59,6 @@ class ShoutController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("ShoutController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];
@@ -91,7 +88,6 @@ class ShoutController extends BaseController{
   public function getShoutsWithJson()
   {
     try{
-    $this->debug->log("UsersController::getShoutsWithJson() request:" . print_r($this->request, true));
       $shouts = new ShoutModel($this->dbh);
       $form = $shouts->createForm();
       foreach ($this->request as $key => $value) {
@@ -109,10 +105,8 @@ class ShoutController extends BaseController{
         $shouts->save($this->request);
         $this->dbh->commit();
       }
-      $this->debug->log("UsersController::getShoutsWithJson() form:" . print_r($form, true));
       $shouts = ShoutService::getShoutTimeLine($this->dbh, $form);
       echo json_encode($shouts);
-      $this->debug->log("UsersController::getShoutsWithJson() shouts_json:" . print_r(json_encode($shouts), true));
       exit();
     } catch (Exception $e) {
       $this->debug->log("UsersController::getShoutsWithJson() error:" . $e->getMessage());

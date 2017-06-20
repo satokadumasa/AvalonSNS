@@ -37,7 +37,6 @@ class SubscriptionController extends BaseController{
   }
 
   public function create() {
-    $this->debug->log("SubscriptionController::create()");
     $subscriptions = new SubscriptionModel($this->dbh);
     $form = $subscriptions->createForm();
     $this->set('Title', 'Subscription Create');
@@ -45,7 +44,6 @@ class SubscriptionController extends BaseController{
   }
 
   public function save(){
-    $this->debug->log("SubscriptionController::save()");
     try {
       $this->dbh->beginTransaction();
       $subscriptions = new SubscriptionModel($this->dbh);
@@ -61,7 +59,6 @@ class SubscriptionController extends BaseController{
   }
 
   public function edit() {
-    $this->debug->log("SubscriptionController::edit()");
     try {
       $datas = null;
       $id = $this->request['id'];
