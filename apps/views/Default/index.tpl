@@ -22,13 +22,17 @@
   <div class="shout">
     <div class="profile_area">
       <div class="prfile_photo">
-        <img src="<!----value:document_root---->images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
+        <a href="<!----value:document_root---->UserInfo/show/<!----value:Shout:UserInfo:user_id---->/">
+          <img src="<!----value:document_root---->images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
+        </a>
       </div>
     </div>
     <div class="shout_area">
       <div class="shout_header">
         <div class="nickname">
-          <!----value:Shout:UserInfo:name----> (<!----value:User:username---->)
+          <a href="<!----value:document_root---->UserInfo/show/<!----value:Shout:UserInfo:user_id---->/">
+            <!----value:Shout:UserInfo:name----> (<!----value:User:username---->)
+          </a>
         </div>
         <div class="created_at">
           <!----value:Shout:created_at---->
