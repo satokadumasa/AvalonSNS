@@ -241,7 +241,11 @@ class View {
         $arr_value = $arr_value[$keys[$i]];
       }
       $search = '<!----'.$v.'---->';
-      $context = str_replace($search, $arr_value, $context);
+      if ($search == "<!----value:document_root---->") {
+        $context = str_replace($search, DOCUMENT_ROOTe, $context);
+      } else {
+        $context = str_replace($search, $arr_value, $context);
+      }
     }
     return $context;
   }

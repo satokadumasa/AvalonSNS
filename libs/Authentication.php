@@ -4,17 +4,17 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class Authentication{
   public static function auth(&$dbh, $request){
     $debug = new Logger('DEBUG');
-    $debug->log("Authentication::auth() request:".print_r($request, true));
+    // $debug->log("Authentication::auth() request:".print_r($request, true));
     $auths = new UserModel($dbh);
-    $debug->log("Authentication::auth() auths:".print_r($auths, true));
+    // $debug->log("Authentication::auth() auths:".print_r($auths, true));
     $auth = $auths->auth($request);
-    $debug->log("Authentication::auth() auth:".print_r($auth, true));
+    // $debug->log("Authentication::auth() auth:".print_r($auth, true));
     if ($auth){
-      $debug->log("Authentication::auth() request:".print_r($request, true));
+      // $debug->log("Authentication::auth() request:".print_r($request, true));
       $user_cookie_name = StringUtil::makeRandStr(USER_COOKIE_NAME_LENGTH);
       setcookie(COOKIE_NAME, $user_cookie_name, time() + COOKIE_LIFETIME);
       $data['Auth'] = $auth;
-      $debug->log("Authentication::auth() request:".print_r($request, true));
+      // $debug->log("Authentication::auth() request:".print_r($request, true));
       Session::set($data);
       return true;
     }

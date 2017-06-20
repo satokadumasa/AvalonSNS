@@ -22,7 +22,7 @@
   <div class="shout">
     <div class="profile_area">
       <div class="prfile_photo">
-        <img src="/images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
+        <img src="<!----value:document_root---->images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
       </div>
     </div>
     <div class="shout_area">
