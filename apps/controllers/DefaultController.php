@@ -14,10 +14,15 @@ class DefaultController extends BaseController {
     $form['Shout']['user_id'] = $this->auth['User']['id'];
     $this->set('Shout', $form['Shout']);
     $shouts = ShoutService::getShoutTimeLine($this->dbh);
-    $timeline_from = $shouts[0]['Shout']['modified_at'];
-    $timeline_from = str_replace(' ', '', $timeline_from);
-    $timeline_from = str_replace('-', '', $timeline_from);
-    $timeline_from = str_replace(':', '', $timeline_from);
+    if ($shouts && count($shouts)) {
+      $timeline_from = $shouts[0]['Shout']['modified_at'];
+      $timeline_from = str_replace(' ', '', $timeline_from);
+      $timeline_from = str_replace('-', '', $timeline_from);
+      $timeline_from = str_replace(':', '', $timeline_from);
+    }
+    else {
+      $timeline_from = '19700101000000';
+    }
 
     $this->set('action_name', 'Home');
     $this->set('timeline_from', $timeline_from);
