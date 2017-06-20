@@ -1,5 +1,6 @@
 config/database.config.php
 temp/*
-logs/*
-
+logs/DEBUG*
+logs/INFO*
+logs/ERROR*
 /vendor/
