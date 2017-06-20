@@ -3,12 +3,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class Authentication{
   public static function auth(&$dbh, $request){
+    $debug = new Logger('DEBUG');
     $auths = new UserModel($dbh);
     $auth = $auths->auth($request);
+    $debug->log("Authentication::auth() auth:".print_r($auth, true));
     if ($auth){
+      $debug->log("Authentication::auth() request:".print_r($request, true));
       $user_cookie_name = StringUtil::makeRandStr(USER_COOKIE_NAME_LENGTH);
       setcookie(COOKIE_NAME, $user_cookie_name, time() + COOKIE_LIFETIME);
       $data['Auth'] = $auth;
+      $debug->log("Authentication::auth() request:".print_r($request, true));
       Session::set($data);
       return true;
     }
