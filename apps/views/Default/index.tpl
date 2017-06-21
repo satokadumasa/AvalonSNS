@@ -12,51 +12,15 @@
   <input type="hidden" name="limit" id="timeline_limit">
   <input type="hidden" name="target" id="target" value="newer">
 </form>
+<form name="follow_change" id="follow_change">
+  <input type="hidden" name="friend_id" id="friend_id">
+</form>
 <div class="shouts">
   <h1>タイムライン</h1>
   <div id="tl_top">
     新規発言読み込み
   </div>
-  <!----iteratior:Shouts:start---->
-  <hr>
-  <div class="shout">
-    <div class="profile_area">
-      <div class="prfile_photo">
-        <a href="<!----value:document_root---->UserInfo/show/<!----value:Shout:UserInfo:user_id---->/">
-          <img src="<!----value:document_root---->images/profile_photos/<!----value:Shout:UserInfo:user_id---->/<!----value:Shout:UserInfo:profile_photo---->">
-        </a>
-      </div>
-    </div>
-    <div class="shout_area">
-      <div class="shout_header">
-        <div class="nickname">
-          <a href="<!----value:document_root---->UserInfo/show/<!----value:Shout:UserInfo:user_id---->/">
-            <!----value:Shout:UserInfo:name----> (<!----value:User:username---->)
-          </a>
-        </div>
-        <div class="created_at">
-          <!----value:Shout:created_at---->
-        </div>
-      </div>
-      <div class="shout_body">
-        <!----value:Shout:outline----><br />
-        <!----value:Shout:detail---->
-      </div>
-      <div class="shout_footer">
-        <div class="fav_area">
-          Fav[]
-        </div>
-        <div class="res_area">
-          Res[]
-        </div>
-        <div class="scat_area">
-          Scat[]
-        </div>
-      </div>
-      <div class=""></div>
-    </div>
-  </div>
-  <!----iteratior:Shout:end---->
+
   <div id="tl_bottom">さらに読み込み</div>
 </div>
 

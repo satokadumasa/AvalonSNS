@@ -136,3 +136,22 @@ div.scat_area {
   float: left;
   border: 0px solid gray;
 }
+
+div.already_folloed {
+  background: #0000ff;
+  color: #fff;
+  width: 55px;
+  height: 20px;
+  float: left;
+  border: 0px solid gray;
+
+}
+
+div.will_follow {
+  background: #ff0000;
+  color: #fff;
+  width: 55px;
+  height: 20px;
+  float: left;
+  border: 0px solid gray;
+}

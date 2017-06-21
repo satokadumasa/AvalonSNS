@@ -9,6 +9,9 @@
 <script src="<!----value:document_root---->js/jquery-3.2.0.js"></script>
 <script src="<!----value:document_root---->js/timeline.js"></script>
 <script type="text/javascript">
+var document_root = '<!----value:document_root---->';
+var friend_ids = <!----value:friend_ids---->;
+var my_id = <!----value:my_id---->;
 $(document).ready(function() {
   $('#tl_top').on('click', function(event) {
     getTimeline(this);
@@ -17,6 +20,7 @@ $(document).ready(function() {
     alert("postShout");
     postShout();
   });
+  getTimeline(null);
 });
 </script>
 </head>
