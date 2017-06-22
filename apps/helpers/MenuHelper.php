@@ -23,7 +23,7 @@ class MenuHelper{
       $user_info_edit = '<a href="'.DOCUMENT_ROOT.'UserInfo/create/">UserInfo</a>';
     }
 
-    $regist_url = '<a href="'.DOCUMENT_ROOT.'User/create/">';
+    $regist_url = '<a href="'.DOCUMENT_ROOT.'User/create/">登録</a>';
     // if (isset($auth[]))
     if ($option == 'logined') {
       $site_menu = <<<EOF
