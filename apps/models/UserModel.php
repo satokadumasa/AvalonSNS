@@ -58,8 +58,8 @@ class UserModel extends BaseModel {
     unset($form[$this->model_name]['role_id']);
     if ($option == 'confirm') {
       unset($form[$this->model_name]['password']);
+      $form[$this->model_name]['authentication_key'] = null;
     }
-    $form[$this->model_name]['authentication_key'] = null;
     parent::save($form);
     return $form;
   }
