@@ -87,7 +87,6 @@ class UserFriendController extends BaseController{
 
   public function follow(){
     $now_date = date('Y-m-d H:i:s');
-    $this->debug->log("form:".print_r($this->request, true));
     $datas = null;
     $friend_id = $this->request['friend_id'];
     $user_id = $this->auth['User']['id'];
@@ -97,20 +96,15 @@ class UserFriendController extends BaseController{
              ->where('UserFriend.friend_id', '=', $friend_id)
              ->where('UserFriend.user_id', '=', $user_id)
              ->find('first');
-    $this->debug->log("UserFriend::follow() datum:".print_r($datum, true));
     $this->dbh->beginTransaction();
     if ($datum) {
-      $this->debug->log("UserFriend::follow() CH-01");
       $user_friends->delete($datum['UserFriend']['id']);
     }
     else{
-      $this->debug->log("UserFriend::follow() CH-02");
       $form['UserFriend']['id'] = null;
       $form['UserFriend']['user_id'] = $user_id;
       $form['UserFriend']['friend_id'] = $friend_id;
-      $this->debug->log("UserFriend::follow() form:" . print_r($form, true));
       $user_friends->save($form);
-      $this->debug->log("UserFriend::follow() CH-03");
     }
 
     $this->dbh->commit();

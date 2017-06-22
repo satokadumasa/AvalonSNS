@@ -51,7 +51,6 @@ class View {
     $file_context = file($fileatime);
     for($i = 0; $i < count($file_context); $i++) {
       $value = $file_context[$i];
-      $this->debug->log("View::framingView() value:".print_r($value, true));
       try {
 
         $value = str_replace('¥n', '', $value);

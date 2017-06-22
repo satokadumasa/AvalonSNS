@@ -9,7 +9,7 @@ class DefaultController extends BaseController {
   }
 
   public function index() {
-    $this->debug->log("DefaultController::index() auth:" . print_r($this->auth, true));
+    // $this->debug->log("DefaultController::index() auth:" . print_r($this->auth, true));
     $shouts = [];
     $friend_ids = [];
     

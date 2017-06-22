@@ -74,7 +74,6 @@ class BaseController {
       if($uris[$i] == $urls[$i]) continue;
       $this->request[mb_strtolower($uris[$i], 'UTF-8')] = $urls[$i];
     }
-    $this->debug->log("BaseController::getRequestValues() request".print_r($this->request, true));
   }
 
   /**

@@ -173,17 +173,12 @@ class UserController extends BaseController{
   }
 
   public function userlist() {
-    $this->debug->log("UsersController::userlist() request:" . print_r($this->request, true));
     $last_user_id = isset($this->request['last_user_id']) ? $this->request['last_user_id'] : 1;
-    $this->debug->log("UsersController::userlist() last_user_id(1):" . $last_user_id);
     $last_user_id = $last_user_id ? $last_user_id : 0;
-    $this->debug->log("UsersController::userlist() last_user_id(1):" . $last_user_id);
     $users = new UserModel($this->dbh);
     $limit = 20;
-    $data = $users->where('User.id', '>', $last_user_id)->limit($limit)->find('all');
-    $this->debug->log("UsersController::userlist() data(1):" . print_r($data, true));
+    $data = $users->where('User.id', '>=', $last_user_id)->limit($limit)->find('all');
     $data = UserService::setUserInfoToUser($data);
-    $this->debug->log("UsersController::userlist() data(2):" . print_r($data, true));
 
     echo json_encode($data);
     exit();
