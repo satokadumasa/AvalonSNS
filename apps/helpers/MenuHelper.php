@@ -13,7 +13,7 @@ class MenuHelper{
     $this->auth = $auth;
   }
 
-  public function site_menu($auth, $option == 'nologin'){
+  public function site_menu($auth, $option = 'nologin'){
     $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
     $user_edit = "<a href='".DOCUMENT_ROOT."User/edit/".$this->auth['User']['id']."/'>UserEdit</a>";
     if (isset($this->auth['User']['UserInfo'])) {
