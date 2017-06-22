@@ -24,6 +24,7 @@ class MenuHelper{
     }
 
     $regist_url = '<a href="'.DOCUMENT_ROOT.'User/create/">登録</a>';
+    $login = '<a href="'.DOCUMENT_ROOT.'login/">Login</a>'
     // if (isset($auth[]))
     if ($option == 'logined') {
       $site_menu = <<<EOF
@@ -49,6 +50,9 @@ EOF;
     <ul id="dropmenu">
       <li><a href="#">メニュー</a>
         <ul>
+          <li>
+            $login
+          </li>
           <li>
             $regist_url
           </li>
