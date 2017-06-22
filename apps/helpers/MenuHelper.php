@@ -13,7 +13,7 @@ class MenuHelper{
     $this->auth = $auth;
   }
 
-  public function site_menu(){
+  public function site_menu($auth, $option == 'nologin'){
     $log_out_str = "<a href='".DOCUMENT_ROOT."logout/'>Logout</a>";
     $user_edit = "<a href='".DOCUMENT_ROOT."User/edit/".$this->auth['User']['id']."/'>UserEdit</a>";
     if (isset($this->auth['User']['UserInfo'])) {
@@ -22,8 +22,11 @@ class MenuHelper{
     else {
       $user_info_edit = '<a href="'.DOCUMENT_ROOT.'UserInfo/create/">UserInfo</a>';
     }
+
+    $regist_url = '<a href="'.DOCUMENT_ROOT.'User/create/">';
     // if (isset($auth[]))
-    $site_menu = <<<EOF
+    if ($option == 'logined') {
+      $site_menu = <<<EOF
     <ul id="dropmenu">
       <li><a href="#">メニュー</a>
         <ul>
@@ -40,6 +43,27 @@ class MenuHelper{
       </li>
     </ul>
 EOF;
+    }
+    else {
+      $site_menu = <<<EOF
+    <ul id="dropmenu">
+      <li><a href="#">メニュー</a>
+        <ul>
+          <li>
+            $log_out_str
+          </li>
+          <li>
+            $user_edit
+          </li>
+          <li>
+            $user_info_edit
+          </li>
+        </ul>
+      </li>
+    </ul>
+EOF;
+
+    }
     return $site_menu;
   }  
 }

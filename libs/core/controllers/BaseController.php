@@ -41,13 +41,14 @@ class BaseController {
     }
     //    $this->set('Sitemenu',)
     $session = Session::get();
+    $menu_helper = new MenuHelper($session['Auth']);
     if (isset($session['Auth'])) {
-      $menu_helper = new MenuHelper($session['Auth']);
-      $log_out_str = $menu_helper->site_menu($session['Auth']);
+      $log_out_str = $menu_helper->site_menu($session['Auth'], 'logined');
       $this->auth = $session['Auth'];
     }
     else {
-      $log_out_str = "<a href='".DOCUMENT_ROOT."login/'>Login</a>";
+      $log_out_str = $menu_helper->site_menu($session['Auth'], 'nologin');
+      // $log_out_str = "<a href='".DOCUMENT_ROOT."login/'>Login</a>";
     }
     $this->set('Sitemenu',$log_out_str);
     Session::deleteMessage('error_message');
