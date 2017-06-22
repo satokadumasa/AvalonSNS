@@ -16,17 +16,17 @@ var my_id = <!----value:my_id---->;
 $(document).ready(function() {
   var tl_top = null;
   $('#tl_top').on('click', function(event) {
-    getTimeline(this);
+    getTimeline(this, 'future');
   });
   $('#post_shout').on('click', function(event) {
     alert("postShout");
     postShout();
   });
-  if($('#tl_top')[0]) getTimeline(null);
+  if($('#tl_top')[0]) getTimeline(null, 'future');
   if($('#user_list_top')[0]) getUserList(null);
 
   $('#line_bottom').on('mouseover', function(event) {
-    if($('#tl_top')[0]) getTimeline(null);
+    if($('#tl_top')[0]) getTimeline(this, 'past');
     if($('#user_list_top')[0]) getUserList(null);
   });
 });

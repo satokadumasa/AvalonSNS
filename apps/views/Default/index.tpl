@@ -8,7 +8,8 @@
   <input type="button" name="bottom" id="post_shout" value="投稿">
 </form>
 <form name="get_timeline" id="get_timeline">
-  <input type="hidden" name="from" id="timeline_from" value="<!----value:timeline_from---->">
+  <input type="hidden" name="from" id="timeline_latest" value="<!----value:timeline_latest---->">
+  <input type="hidden" name="from" id="timeline_oldest" value="<!----value:timeline_oldest---->">
   <input type="hidden" name="limit" id="timeline_limit">
   <input type="hidden" name="target" id="target" value="newer">
 </form>

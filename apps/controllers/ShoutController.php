@@ -87,6 +87,7 @@ class ShoutController extends BaseController{
 
   public function getShoutsWithJson()
   {
+    $this->debug->log("ShoutController::getShoutsWithJson() request:".print_r($this->request, true));
     try{
       $shouts = new ShoutModel($this->dbh);
       $form = $shouts->createForm();

@@ -18,8 +18,8 @@ class DefaultController extends BaseController {
     $form['Shout']['user_id'] = $this->auth['User']['id'];
     $this->set('Shout', $form['Shout']);
 
-    $timeline_from = '19700101000000';
-
+    $timeline_latest = '19700101000000';
+    $timeline_oldest = '19700101000000';
     // if ($this->auth) {
     //   foreach ($this->auth['User']['UserFriend'] as $key => $user_friend) {
     //     $friend_ids[] = $user_friend['UserFriend']['friend_id'];
@@ -35,7 +35,8 @@ class DefaultController extends BaseController {
 
     $this->set('document_root', DOCUMENT_ROOT);
     $this->set('action_name', 'Home');
-    $this->set('timeline_from', $timeline_from);
+    $this->set('timeline_latest', $timeline_latest);
+    $this->set('timeline_oldest', $timeline_oldest);
     $this->set('Title', 'Home');
     $this->set('Shouts', $shouts);
     $this->set('friend_ids', $friend_ids_str);

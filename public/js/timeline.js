@@ -1,4 +1,4 @@
-function generateInsertShoutsHtml(json) {
+function generateInsertShoutsHtml(json, direction) {
   var insert_html = ''
   var follow = null;
   for (var i = 0; i < (json.length - 1); i++) {
@@ -44,7 +44,12 @@ function generateInsertShoutsHtml(json) {
     modified_at = modified_at.replace("-", "");
     modified_at = modified_at.replace(":", "");
     modified_at = modified_at.replace(":", "");
-    $("#timeline_from").val(modified_at);
+    if (i == 0 && direction == 'future') {
+      $("#timeline_latest").val(modified_at);
+    }
+    else {
+      $("#timeline_oldest").val(modified_at);
+    }
   }
   
   return insert_html;
@@ -61,14 +66,17 @@ function followOrNot(friend_ids, user_id) {
   return insert_html;
 }
 
-function getTimeline(obj) {
-  var timeline_from = $('#timeline_from').val();
+function getTimeline(obj, direction) {
+  var timeline_latest = $('#timeline_latest').val();
+  var timeline_oldest = $('#timeline_oldest').val();
   var target = $('#target').val();
   var post_data = [];
-  post_data['target'] = target;
+  post_data = {'direction':direction};
   if (obj == null) {obj = $('#tl_top');}
-
-  var url = document_root + 'Shouts/getShoutsWithJson/'+timeline_from+'/';
+  if (direction == 'past') {
+    timeline_latest = timeline_oldest;
+  }
+  var url = document_root + 'Shouts/getShoutsWithJson/'+timeline_latest+'/';
   $.ajax({
     url: url,
     type: 'GET',
@@ -76,8 +84,13 @@ function getTimeline(obj) {
     data: post_data,
     dataType: 'json',
     success: function(json) {
-      var insert_html = generateInsertShoutsHtml(json);
-      $(insert_html).insertAfter(obj);
+      var insert_html = generateInsertShoutsHtml(json, direction);
+      if (direction == 'future'){
+        $(insert_html).insertAfter(obj);
+      }
+      else {
+        $(insert_html).insertBefore(obj);
+      }
     },
     error: function(json) {
       window.alert('正しい結果を得られませんでした。');
@@ -86,7 +99,7 @@ function getTimeline(obj) {
 }
 
 function postShout(){
-  var timeline_from = $('#timeline_from').val();
+  var timeline_latest = $('#timeline_latest').val();
   var target = $('#target').val();
   var form = $('#shout_from');
   form['target'] = target;
@@ -137,6 +150,4 @@ function follow(obj, user_id){
       window.alert('正しい結果を得られませんでした。');
     }
   });
-
-
 }
