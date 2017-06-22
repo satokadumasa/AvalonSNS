@@ -26,8 +26,8 @@ class SendNotify {
       $body = null;
       $user2 = null;
       $notification = new Notification();
-      // $body = $notification->geterateRegistNotifyMessage($form, 'Mailer', 'regist_notify');
-      // $notification->sendRegistNotify($form, $body, '登録確認メール');
+      $body = $notification->geterateRegistNotifyMessage($form, 'Mailer', 'regist_notify');
+      $notification->sendRegistNotify($form, $body, '登録確認メール');
       $form['User']['notified_at'] = date('Y-m-d H:i:s');
       $this->debug->log("SendNotify::sendNotify() form:".print_r($form, true));
       unset($form['User']['password']);
