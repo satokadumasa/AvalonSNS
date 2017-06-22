@@ -56,12 +56,10 @@ class UserModel extends BaseModel {
     $form[$this->model_name]['password'] = md5($form[$this->model_name]['password'].SALT);
     $form[$this->model_name]['notified_at'] = date('Y-m-d H:i:s');
     unset($form[$this->model_name]['role_id']);
-    if ($option !== 'confirm') {
+    if ($option == 'confirm') {
       unset($form[$this->model_name]['password']);
     }
-    if ($option == 'confirm') {
-      $form[$this->model_name]['authentication_key'] = null;
-    }
+    $form[$this->model_name]['authentication_key'] = null;
     parent::save($form);
     return $form;
   }
