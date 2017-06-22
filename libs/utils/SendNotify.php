@@ -33,7 +33,7 @@ class SendNotify {
       unset($form['User']['password']);
       unset($form['User']['authentication_key']);
       $user2 = new UserModel($this->dbh);
-      $user2->update($form);
+      $user2->update($form, 'send_notify');
     }
   }
 

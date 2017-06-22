@@ -60,6 +60,10 @@ class UserModel extends BaseModel {
       unset($form[$this->model_name]['password']);
       $form[$this->model_name]['authentication_key'] = null;
     }
+    if ($option == 'send_notify'){
+      unset($form[$this->model_name]['password']);
+      unset($form[$this->model_name]['authentication_key']);
+    }
     parent::save($form);
     return $form;
   }
