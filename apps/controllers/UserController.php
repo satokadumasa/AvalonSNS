@@ -49,9 +49,9 @@ class UserController extends BaseController{
   public function confirm(){
     $user = new UserModel($this->dbh);
     $data = $user->where('User.authentication_key', '=', $this->request['confirm_string'])->find('first');
-    $this->log("UserController::confirm() data:".print_r($data, true));
+    $this->debug->log("UserController::confirm() data:".print_r($data, true));
     $data['User']['authentication_key'] = null;
-    $user->update($data);
+    $user->update($data, 'confirm');
     $this->set('Title', 'User Confirmed');
     $this->set('message', 'Welcom, Confirmed your redistration.');
     $this->set('User', $data['User']);
