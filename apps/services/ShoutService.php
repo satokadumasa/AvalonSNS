@@ -35,7 +35,6 @@ class ShoutService {
     return $shouts;
   }
 
-
   public static function setUserInfoToShout($shouts, $users) {
     $debug =new Logger('DEBUG');
     $shout_arr = [];
@@ -45,10 +44,7 @@ class ShoutService {
       }
       else {
         $conf = Config::get('user_info');
-        $debug->log("ShoutService::setUserInfoToShout() conf(1):".print_r($conf, true));
         $user_info = $conf['user_info'];
-        $h = $user_info['profile_photo_default']; // リサイズしたい大きさを指定
-        $w = $user_info['profile_photo_width'];
         $user_info = [
           'profile_photo' => $user_info['profile_photo_default'],
           'name' => $users[$shout['User']['id']]['User']['username'],

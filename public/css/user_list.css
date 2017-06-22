@@ -1,0 +1,110 @@
+    insert_html += "  <div class='user_info'>"
+     + "    <hr>"
+     + "    <div class='user_profile_area'>"
+     + "      <div class='user_prfile_photo'>"
+     + "        <img src='" + document_root + "images/profile_photos/" + json[i]['User']['UserInfo']['user_id'] + "/" + json[i]['User']['UserInfo']['profile_photo'] + "'>"
+     + "      </div>"
+     + follow
+     + "    </div>"
+     + "    <div class='user_info_area'>"
+     + "      <div class='user_info_header'>"
+     + "        <div class='nickname'>"
+     + "          " + json[i]['User']['UserInfo']['name'] + " (" + json[i]['User']['username'] + ")"
+     + "        </div>"
+     + "      </div>"
+     + "      <div class='user_info_detail'>"
+     + "        " + json[i]['User']['UserInfo']['detail'] + "<br />"
+     + "      </div>"
+     + "    </div>"
+     + "  </div>";
+
+div.user_info{
+  background: #fff;
+  color: #000;
+  width: 64px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+}
+
+div.user_profile_area {
+  background: #fff;
+  color: #000;
+  width: 58px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+}
+
+div.user_prfile_photo {
+  background: #fff;
+  color: #000;
+  width: 54px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+}
+
+div.user_info_area {
+  background: #fff;
+  color: #000;
+  width: 58px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+}
+
+div.user_info_header {
+  background: #fff;
+  color: #000;
+  width: 58px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+
+}
+
+div.nickname {
+  background: #fff;
+  color: #000;
+  width: 58px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+}
+
+div.user_info_detail {
+  background: #fff;
+  color: #000;
+  width: 58px;
+  min-height: 100px;
+  padding: 2px;
+  float: left;
+  border: 0px solid gray;
+
+}
+
+div.already_folloed_user_list {
+  background: #0000ff;
+  color: #fff;
+  width: 55px;
+  height: 20px;
+  float: left;
+  border: 0px solid gray;
+
+}
+
+div.will_follow_user_list {
+  background: #ff0000;
+  color: #fff;
+  width: 55px;
+  height: 20px;
+  float: left;
+  border: 0px solid gray;
+}

@@ -3,6 +3,8 @@
     SIDEMENU    
   </div>
   <div class="side_menu_item">
-    MENU_1
+    <a href="<!----value:document_root---->User/index/">
+      ユーザー一覧
+    </a>
   </div>
 </div>

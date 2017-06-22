@@ -33,7 +33,6 @@
   </div>
 </div>
 <div class="detail_menu">
-  
 </div>
 <div class="detail_menu_column">
   <A HREF="<!----value:document_root---->User/index/">INDEX</A>

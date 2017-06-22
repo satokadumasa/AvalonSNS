@@ -1,6 +1,8 @@
 <div class="top_menu">
   <div class="site_title">
-    <!----value:SiteTitle---->
+    <a href="<!----value:document_root---->">
+      <!----value:SiteTitle---->
+    </a>
   </div>
   <div class="site_setup">
     <!----value:Sitemenu---->

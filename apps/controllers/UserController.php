@@ -59,20 +59,25 @@ class UserController extends BaseController{
 
 
   public function index() {
-    $users = new UserModel($this->dbh);
-    $limit = 10 * (isset($this->request['page']) ? $this->request['page'] : 1);
-    $offset = 10 * (isset($this->request['page']) ? $this->request['page'] - 1 : 0);
+    // $users = new UserModel($this->dbh);
+    // $limit = 10 * (isset($this->request['page']) ? $this->request['page'] : 1);
+    // $offset = 10 * (isset($this->request['page']) ? $this->request['page'] - 1 : 0);
 
-    $datas = $users->where('User.id', '>', 0)->limit($limit)->offset($offset)->find('all');
+    // $datas = $users->where('User.id', '>', 0)->limit($limit)->offset($offset)->find('all');
+    // $this->debug->log("UserController::save() users:" . print_r($datas, true));
 
-    $ref = isset($this->request['page']) ? $this->request['page'] : 0;
-    $next = isset($this->request['page']) ? $this->request['page'] + 1 : 2;
+    // $ref = isset($this->request['page']) ? $this->request['page'] : 0;
+    // $next = isset($this->request['page']) ? $this->request['page'] + 1 : 2;
 
     $this->set('Title', 'User List');
-    $this->set('datas', $datas);
-    $this->set('User', $datas);
-    $this->set('ref', $ref);
-    $this->set('next', $next);
+    // $this->set('datas', $datas);
+    // $this->set('User', $datas);
+    // $this->set('ref', $ref);
+    // $this->set('next', $next);
+    $friend_ids = UserService::getFriendIds($this->auth, $friend_ids_str, $my_id);
+    $this->set('last_user_id', 1);
+    $this->set('friend_ids', $friend_ids_str);
+    $this->set('my_id', $my_id);
   }
 
   public function show() {
@@ -167,5 +172,20 @@ class UserController extends BaseController{
     }
   }
 
+  public function userlist() {
+    $this->debug->log("UsersController::userlist() request:" . print_r($this->request, true));
+    $last_user_id = isset($this->request['last_user_id']) ? $this->request['last_user_id'] : 1;
+    $this->debug->log("UsersController::userlist() last_user_id(1):" . $last_user_id);
+    $last_user_id = $last_user_id ? $last_user_id : 0;
+    $this->debug->log("UsersController::userlist() last_user_id(1):" . $last_user_id);
+    $users = new UserModel($this->dbh);
+    $limit = 20;
+    $data = $users->where('User.id', '>', $last_user_id)->limit($limit)->find('all');
+    $this->debug->log("UsersController::userlist() data(1):" . print_r($data, true));
+    $data = UserService::setUserInfoToUser($data);
+    $this->debug->log("UsersController::userlist() data(2):" . print_r($data, true));
 
+    echo json_encode($data);
+    exit();
+  }
 }

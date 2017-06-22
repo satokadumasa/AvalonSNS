@@ -20,7 +20,6 @@
   <div id="tl_top">
     新規発言読み込み
   </div>
-
-  <div id="tl_bottom">さらに読み込み</div>
+  <div id="line_bottom">さらに読み込む</div>
 </div>
 

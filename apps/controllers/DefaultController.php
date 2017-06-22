@@ -17,27 +17,21 @@ class DefaultController extends BaseController {
     $form = $shout->createForm();
     $form['Shout']['user_id'] = $this->auth['User']['id'];
     $this->set('Shout', $form['Shout']);
-    // $shouts = ShoutService::getShoutTimeLine($this->dbh);
-    // if ($shouts && count($shouts)) {
-    //   $timeline_from = $shouts[0]['Shout']['modified_at'];
-    //   $timeline_from = str_replace(' ', '', $timeline_from);
-    //   $timeline_from = str_replace('-', '', $timeline_from);
-    //   $timeline_from = str_replace(':', '', $timeline_from);
+
+    $timeline_from = '19700101000000';
+
+    // if ($this->auth) {
+    //   foreach ($this->auth['User']['UserFriend'] as $key => $user_friend) {
+    //     $friend_ids[] = $user_friend['UserFriend']['friend_id'];
+    //   }
+    //   $friend_ids_str = "[" . implode(',', $friend_ids) . "]";
+    //   $my_id = $this->auth['User']['id'];
     // }
     // else {
-    $timeline_from = '19700101000000';
+    //   $friend_ids_str = "[0]";
+    //   $my_id = 1;
     // }
-    if ($this->auth) {
-      foreach ($this->auth['User']['UserFriend'] as $key => $user_friend) {
-        $friend_ids[] = $user_friend['UserFriend']['friend_id'];
-      }
-      $friend_ids_str = "[" . implode(',', $friend_ids) . "]";
-      $my_id = $this->auth['User']['id'];
-    }
-    else {
-      $friend_ids_str = "[0]";
-      $my_id = 1;
-    }
+    $friend_ids = UserService::getFriendIds($this->auth, $friend_ids_str, $my_id);
 
     $this->set('document_root', DOCUMENT_ROOT);
     $this->set('action_name', 'Home');

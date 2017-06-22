@@ -8,11 +8,13 @@
 <link rel="stylesheet" href="<!----value:document_root---->css/timeline.css">
 <script src="<!----value:document_root---->js/jquery-3.2.0.js"></script>
 <script src="<!----value:document_root---->js/timeline.js"></script>
+<script src="<!----value:document_root---->js/user_list.js"></script>
 <script type="text/javascript">
 var document_root = '<!----value:document_root---->';
 var friend_ids = <!----value:friend_ids---->;
 var my_id = <!----value:my_id---->;
 $(document).ready(function() {
+  var tl_top = null;
   $('#tl_top').on('click', function(event) {
     getTimeline(this);
   });
@@ -20,7 +22,13 @@ $(document).ready(function() {
     alert("postShout");
     postShout();
   });
-  getTimeline(null);
+  if($('#tl_top')[0]) getTimeline(null);
+  if($('#user_list_top')[0]) getUserList(null);
+
+  $('#line_bottom').on('mouseover', function(event) {
+    if($('#tl_top')[0]) getTimeline(null);
+    if($('#user_list_top')[0]) getUserList(null);
+  });
 });
 </script>
 </head>
