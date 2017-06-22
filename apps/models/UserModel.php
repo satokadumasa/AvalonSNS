@@ -52,6 +52,7 @@ class UserModel extends BaseModel {
   }
 
   public function update($form, $option = null) {
+    $this->debug->log("User::update() form:".print_r($form, true));
     $session = Session::get();
     unset($form[$this->model_name]['password_confirm']);
     $form[$this->model_name]['password'] = md5($form[$this->model_name]['password'].SALT);
