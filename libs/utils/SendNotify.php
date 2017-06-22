@@ -30,7 +30,7 @@ class SendNotify {
       $notification->sendRegistNotify($form, $body, '登録確認メール');
       $form['User']['notified_at'] = date('Y-m-d H:i:s');
       $user2 = new UserModel($this->dbh);
-      $user2->save($form);
+      $user2->update($form);
     }
   }
 
