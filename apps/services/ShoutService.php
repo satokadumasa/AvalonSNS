@@ -20,8 +20,7 @@ class ShoutService {
                    . substr($options['Shout']['created_at'], 8, 2) . ':'  //  時
                    . substr($options['Shout']['created_at'], 10, 2) . ':'  //　分
                    . substr($options['Shout']['created_at'], 12, 2);       // 病
-      $operator = (isset($options['Shout']['direction']) && $options['Shout']['direction'] == 'past') ? '<=' : '>=';
-      $debug->log("ShoutService::getShoutTimeLine() operator:".$operator);
+      $operator = (isset($options['Shout']['direction']) && $options['Shout']['direction'] == 'past') ? '<' : '>';
       $shout->where('Shout.modified_at', $operator, $modified_at);
     }
     $shouts = $shout->find('all');
@@ -61,7 +60,6 @@ class ShoutService {
 
       $shout_arr[] = $shout;
     }
-    $debug->log("ShoutService::setUserInfoToShout() shout_arr(1):".print_r($shout_arr, true));
     return $shout_arr;
   }
 }

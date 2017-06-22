@@ -19,7 +19,6 @@ $(document).ready(function() {
     getTimeline(this, 'future');
   });
   $('#post_shout').on('click', function(event) {
-    alert("postShout");
     postShout();
   });
   if($('#tl_top')[0]) getTimeline(null, 'future');
