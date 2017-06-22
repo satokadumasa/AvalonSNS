@@ -47,7 +47,7 @@ class UserService{
   public static function getFriendIds($user, &$friend_ids_str, &$my_id) {
     $friend_ids_str = "[0]";
     $my_id = 1;
-    if ($user) {
+    if ($user && isset($user['User']['UserFriend'])) {
       foreach ($user['User']['UserFriend'] as $key => $user_friend) {
         $friend_ids[] = $user_friend['UserFriend']['friend_id'];
       }
