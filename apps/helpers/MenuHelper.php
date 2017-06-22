@@ -50,13 +50,7 @@ EOF;
       <li><a href="#">メニュー</a>
         <ul>
           <li>
-            $log_out_str
-          </li>
-          <li>
-            $user_edit
-          </li>
-          <li>
-            $user_info_edit
+            $regist_url
           </li>
         </ul>
       </li>
