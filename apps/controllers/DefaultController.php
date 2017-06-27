@@ -39,6 +39,7 @@ class DefaultController extends BaseController {
     $this->set('timeline_oldest', $timeline_oldest);
     $this->set('Title', 'Home');
     $this->set('Shouts', $shouts);
+    $this->set('Auth', $this->auth);
     $this->set('friend_ids', $friend_ids_str);
     $this->set('my_id', $my_id);
   }

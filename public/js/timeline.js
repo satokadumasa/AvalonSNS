@@ -24,17 +24,17 @@ function generateInsertShoutsHtml(json, direction) {
      + "        " + json[i]['Shout']['outline'] + "<br />"
      + "        " + json[i]['Shout']['detail'] + "<br />"
      + "      </div>"
-     // + "      <div class='shout_footer'>"
+     + "      <div class='shout_footer'>"
      // + "        <div class='fav_area'>"
      // + "          Fav[]"
      // + "        </div>"
      // + "        <div class='res_area'>"
-     // + "          Res[]"
+     // + "          " + responceTo(json[i]['User'])
      // + "        </div>"
      // + "        <div class='scat_area'>"
      // + "          Scat[]"
      // + "        </div>"
-     // + "      </div>"
+     + "      </div>"
      + "    </div>"
      + "  </div>";
     
@@ -55,6 +55,9 @@ function generateInsertShoutsHtml(json, direction) {
   return insert_html;
 }
 
+// function responceTo(user_id){
+//   $insert_html = "<a href=''"
+// }
 function followOrNot(friend_ids, user_id) {
   insert_html = "";
   if (my_id == user_id) return insert_html;

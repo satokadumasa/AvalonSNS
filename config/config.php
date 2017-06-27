@@ -1,15 +1,18 @@
 <?php
 define('SITE_NAME', '書庫セラエノ');
+
+define('STRANGER_PATH', '/Users/satokadumasa/Project/PHP/strangerphp');
+define('LIB_PATH', STRANGER_PATH.'/libs/');
+define('SCAFFOLD_TEMPLATE_PATH', LIB_PATH.'/templates/');
+define('BIN_PATH', LIB_PATH.'bin/');
+
 define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('APP_PATH', PROJECT_ROOT.'/apps/');
 define('CONFIG_PATH', PROJECT_ROOT.'/config/');
-define('LIB_PATH', PROJECT_ROOT.'/libs/');
 define('TEMP_PATH', PROJECT_ROOT.'/temp/');
 define('LOG_PATH', PROJECT_ROOT.'/logs/');
 define('MIGRATION_PATH', PROJECT_ROOT.'/db/migrate/');
-define('SCAFFOLD_TEMPLATE_PATH', PROJECT_ROOT.'/templates/');
 
-define('BIN_PATH', APP_PATH.'bin/');
 define('CONTROLLER_PATH', APP_PATH . 'controllers/');
 define('MODEL_PATH', APP_PATH . 'models/');
 define('VIEW_TEMPLATE_PATH', APP_PATH . 'views/');
@@ -22,10 +25,9 @@ define('SP_TAG', '##');
 
 define('PRODUCTION', 1);
 define('DEVELOPEMENT', 3);
-
 define('ENVIRONMENTS', 'development');
 define('LOG_LEVEL', DEVELOPEMENT);
-// define('DOMAIN_NAME', 'avalonsns.example.com');
+
 define('DOMAIN_NAME', 'avalonsns.example.com');
 define('DOCUMENT_ROOT', '/');
 define('BASE_URL', 'http://'.DOMAIN_NAME.DOCUMENT_ROOT);

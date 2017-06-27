@@ -1,4 +1,5 @@
 <h1><!----value:action_name----></h1>
+<!----disp_div:Auth:User:id:existing:none---->
 <form action="<!----value:document_root---->Shouts/getShoutsWithJson/" method="post" id="shout_from">
   <input type="hidden" name="Shout[user_id]" size="8" length="8" value="<!----value:Shout:user_id---->"><br>
   ■概要<br />
@@ -7,6 +8,7 @@
   <textarea name="Shout[detail]" cols="80" rows="10"><!----value:Shout:detail----></textarea><br />
   <input type="button" name="bottom" id="post_shout" value="投稿">
 </form>
+<!----disp_div:end---->
 <form name="get_timeline" id="get_timeline">
   <input type="hidden" name="from" id="timeline_latest" value="<!----value:timeline_latest---->">
   <input type="hidden" name="from" id="timeline_oldest" value="<!----value:timeline_oldest---->">
